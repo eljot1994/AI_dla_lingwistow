@@ -1,13 +1,15 @@
-﻿import { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Dashboard } from './components/Dashboard'
 import { Header } from './components/Header'
 import { LessonOnePage } from './components/LessonOnePage'
 import { LessonTwoPage } from './components/LessonTwoPage'
+import { LessonThreePage } from './components/LessonThreePage'
+import { LessonFourPage } from './components/LessonFourPage'
 import { LessonPage } from './components/LessonPage'
 import { Sidebar } from './components/Sidebar'
 import { lessons, modules } from './data/courseData'
 
-const CURRENT_LESSON = 1
+const CURRENT_LESSON = 4
 
 export default function App() {
   const [activeLessonId, setActiveLessonId] = useState<number | null>(1)
@@ -42,6 +44,10 @@ export default function App() {
             <LessonOnePage />
           ) : activeLesson.id === 2 ? (
             <LessonTwoPage />
+          ) : activeLesson.id === 3 ? (
+            <LessonThreePage />
+          ) : activeLesson.id === 4 ? (
+            <LessonFourPage />
           ) : (
             <LessonPage lesson={activeLesson} />
           )}

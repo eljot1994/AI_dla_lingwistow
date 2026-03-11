@@ -1,4 +1,4 @@
-﻿export type Module = {
+export type Module = {
   id: string
   title: string
   subtitle: string
@@ -93,7 +93,69 @@ const lessonBlueprints = [
       'W jakich zadaniach językoznawczych możesz użyć podejścia iteracyjnego od jutra?',
     ],
   },
-  ...Array.from({ length: 12 }, () => ({ ...emptyLesson })),
+  {
+    title: 'Transkrypcja nagrania: darmowe pipeline i ewaluacja jakości',
+    theme: 'Pracujemy na nagraniu z Zajęć 2 i porównujemy darmowe metody transkrypcji: lokalne, GUI i awaryjnie webowe.',
+    goals: [
+      'Wykonanie transkrypcji bez płatnych API',
+      'Porównanie jakości narzędzi na tym samym materiale',
+      'Ocena transkryptów wspólną rubryką 1-5',
+      'Dokumentowanie ustawień i czasu pracy',
+      'Przygotowanie materiału do mini-projektu',
+    ],
+    tools: [
+      'Whisper lokalnie (Python)',
+      'whisper.cpp',
+      'Subtitle Edit (GUI)',
+      'ffmpeg do przygotowania audio',
+      'Arkusz rubryki jakości transkryptu',
+    ],
+    exercises: [
+      'Przygotuj wspólny fragment testowy nagrania z Zajęć 2 (6-8 min).',
+      'Wykonaj transkrypcję tym samym fragmentem trzema podejściami (min. 2 na grupę).',
+      'Zachowaj wersję surową i po korekcie, a różnice opisz w logu.',
+      'Oceń wyniki rubryką: kompletność, poprawność, czytelność, zgodność z nagraniem, koszt czasu.',
+      'Przedstaw rekomendację narzędzia dla mini-projektu wraz z uzasadnieniem.',
+    ],
+    reflection: [
+      'Które darmowe narzędzie dało najlepszy kompromis jakość/czas?',
+      'Jakie błędy transkrypcji powtarzały się najczęściej i dlaczego?',
+      'Kiedy warto iść w pełny offline, a kiedy w rozwiązanie GUI/web?',
+      'Jak opiszesz metodologię transkrypcji w swoim mini-projekcie?',
+    ],
+  },
+  {
+    title: 'Python: transkrypcja PL z Hugging Face (Google Colab lub PyCharm)',
+    theme: 'Skupiamy się na prostym kodzie Python do transkrypcji po polsku, z użyciem modelu Hugging Face i dwóch środowisk pracy.',
+    goals: [
+      'Uruchomienie polskiej transkrypcji mowy na modelu HF',
+      'Przejście workflow krok po kroku w Colab i PyCharm',
+      'Zbudowanie prostego skryptu: input audio -> output txt',
+      'Świadome użycie Codex i chatu do debugowania oraz prostego refaktoru',
+      'Dokumentacja procesu i ograniczeń modelu',
+    ],
+    tools: [
+      'Python 3.10+ i venv',
+      'Hugging Face transformers + model openai/whisper-small',
+      'Google Colab lub PyCharm',
+      'Codex + chat (pomoc kodowa)',
+      'Google AI Studio (opcjonalnie do prostych stron z wynikami)',
+    ],
+    exercises: [
+      'Uruchom transkrypcję po polsku na krótkim pliku audio w Google Colab.',
+      'Uruchom ten sam kod lokalnie w PyCharm jako skrypt `transcribe.py`.',
+      'Zapisz dwie wersje pliku: surową i poprawioną ręcznie.',
+      'Porównaj wynik i czas działania między Colab i PyCharm.',
+      'Przygotuj krótką notatkę o ograniczeniach modelu na Twoim nagraniu.',
+    ],
+    reflection: [
+      'Które środowisko było wygodniejsze: Colab czy PyCharm i dlaczego?',
+      'Jakie błędy model popełniał najczęściej na języku polskim?',
+      'W którym kroku najbardziej pomógł Codex, a w którym chat?',
+      'Jak poprawisz jakość transkrypcji w kolejnej iteracji?',
+    ],
+  },
+  ...Array.from({ length: 10 }, () => ({ ...emptyLesson })),
   {
     title: 'Prezentacje i omówienie mini-projektów',
     theme: 'Prezentacja wyników, porównanie metod i ograniczeń.',
@@ -107,7 +169,7 @@ const lessonBlueprints = [
 export const lessons: Lesson[] = lessonBlueprints.map((item, index) => {
   const id = index + 1
   return {
-    // Wszystkie zajęcia mają ten sam format danych, dzięki czemu widok 2-15 jest łatwy do dalszej rozbudowy.
+    // Wszystkie zajęcia mają ten sam format danych, dzięki czemu widok 5-15 jest łatwy do dalszej rozbudowy.
     id,
     title: item.title,
     moduleId: moduleForLesson(id),
